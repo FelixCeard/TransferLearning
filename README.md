@@ -184,6 +184,97 @@ Other than that, stored checkpoints in the lightning_logs folder still contain t
 Those can be extracted and used to initialize a pytorch model from scratch entirely without lightning.
 See https://lightning.ai/docs/pytorch/stable/deploy/production_intermediate.html for a way to do this.
 
+## Custom Data
+If you wish to train on custom data, you'll need to create new appropriate config files. 
+
+For our project, we used the following folder structure for the data, please use a similar data structure style if you wish to train on custom data:
+```
+.
+├── README.md
+├── data/
+    ├── classification_1
+    │   ├── dev
+    │   │   ├── 1_M
+    │   │   ├── 2_MST
+    │   │   ├── 3_LB
+    │   │   └── 4_UB
+    │   ├── test
+    │   │   ├── 1_M
+    │   │   ├── 2_MST
+    │   │   ├── 3_LB
+    │   │   └── 4_UB
+    │   └── train
+    │       ├── ...
+    ├── classification_2
+    │   ├── raw
+    │   │   ├── dev
+    │   │   │   ├── martensite
+    │   │   │   ├── network
+    │   │   │   ├── pearlite
+    │   │   │   ├── pearlite+spheroidite
+    │   │   │   ├── pearlite+widmanstatten
+    │   │   │   ├── spheroidite
+    │   │   │   └── spheroidite+widmanstatten
+    │   │   ├── test
+    │   │   │   ├── ...
+    │   │   └── train
+    │   │       ├── ...
+    │   └── tiled
+    │       ├── dev
+    │       │   ├── martensite
+    │       │   ├── network
+    │       │   ├── pearlite
+    │       │   ├── pearlite+spheroidite
+    │       │   ├── pearlite+widmanstatten
+    │       │   ├── spheroidite
+    │       │   └── spheroidite+widmanstatten
+    │       ├── test
+    │       │   ├── ...
+    │       └── train
+    │           ├── ...
+    ├── segmentation_1
+    │   ├── raw
+    │   │   ├── dev
+    │   │   │   ├── Masks
+    │   │   │   └── Original
+    │   │   ├── test
+    │   │   │   ├── Masks
+    │   │   │   └── Original
+    │   │   └── train
+    │   │       ├── Masks
+    │   │       └── Original
+    │   └── tiled
+    │       ├── dev
+    │       │   ├── Masks
+    │       │   └── Original
+    │       ├── test
+    │       │   ├── Masks
+    │       │   └── Original
+    │       └── train
+    │           ├── Masks
+    │           └── Original
+    └── segmentation_2
+        ├── raw
+        │   ├── dev
+        │   │   ├── Masks
+        │   │   └── Original
+        │   ├── test
+        │   │   ├── Masks
+        │   │   └── Original
+        │   └── train
+        │       ├── Masks
+        │       └── Original
+        └── tiled
+            ├── dev
+            │   ├── Masks
+            │   └── Original
+            ├── test
+            │   ├── Masks
+            │   └── Original
+            └── train
+                ├── Masks
+```
+
 ## Logging
 
 During training, validation and testing progress is logged to tensorboard. To view it, run
